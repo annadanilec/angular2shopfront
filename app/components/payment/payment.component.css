@@ -1,0 +1,26 @@
+h3 {
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+.column {
+  text-align: center;
+}
+i {
+  font-size: 30px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+.three.column.row {
+  margin-top: 10%;
+}
+.unvisible {
+  border:0px;
+  background-color: transparent;
+}
+input[type="radio"] {
+  margin-bottom: 7px;
+  padding-right: 5px;
+}
+.discount {
+  margin-top: 5%;
+}

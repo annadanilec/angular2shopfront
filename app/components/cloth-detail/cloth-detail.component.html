@@ -1,0 +1,27 @@
+<div class="ui grid">
+  <div class="four wide column">
+    <cart></cart>
+  </div>
+
+  <div class="twelve wide column">
+    <div *ngIf="cloth" class="ui grid">
+      <div class="six wide column">
+        <img [src]="cloth.image" alt="product image"/>
+      </div>
+      <div class="ten wide column">
+        <h3>{{cloth.name}}</h3>
+        <p class="cat">{{cloth.cat}}</p>
+        <p>{{cloth.description}}</p>
+        <h4>Price: {{cloth.price | currency: 'USD': true}}</h4>
+        <div class="extra content">
+          <span class="left floated">
+            <button class="ui inverted blue button"  (click)="return()">Back</button>
+          </span>
+          <span class="right floated">
+            <button class="ui inverted blue button"  (click)="addToCart(cloth)">Buy now</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="ui segment">
+  <h4>Cart</h4>
+  <div class="ui list">
+     <div class="item" *ngFor="let cloth of cart.clothes">{{cloth.name}} - {{cloth.price | currency: 'USD':true}} <button class="close" (click)="delete(cloth)"><i class="remove icon"></i></button></div>
+  </div>
+  <h4>{{cart.total | currency: 'USD':true}}</h4>
+  <button class="ui inverted blue button" [routerLink]="['/payment']">Pay now</button>
+</div>

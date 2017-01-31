@@ -1,0 +1,51 @@
+<div class="ui grid">
+  <div class="four wide column">
+    <div class="ui segments">
+      <div class="ui segment" *ngFor="let category of categories" (click)="selectCategory(category)">
+        <a class="item" >{{category.name}}</a>
+      </div>
+      <div class="ui segment">
+        <a class="item" (click)="clearCategory('')">
+          All
+        </a>
+      </div>
+    </div>
+    <cart></cart>
+  </div>
+  <div class="twelve wide column">
+    <div *ngFor="let category of categories | categoryFilter:{name:selectedCategory}">
+      <h4 class="ui horizontal divider header">
+        <i class="tag icon"></i>
+        {{category.name}}
+      </h4>
+      <div class="ui grid">
+        <div class="five wide column" *ngFor="let cloth of clothes | categoryFilter:{cat:category.name}">
+          <div class="ui cards">
+            <div class="card">
+              <div class="image">
+                <img [src]="cloth.image" alt="product image"/>
+              </div>
+              <div class="content">
+                <div class="header">{{cloth.name}}</div>
+                <div class="meta">
+                  <a>{{cloth.cat}}</a>
+                </div>
+                <div class="description">
+                  <strong>Price: {{cloth.price | currency: 'USD':true}}</strong>
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="left floated">
+                  <button class="ui inverted blue button"  [routerLink]="['/detail', cloth.id]">View more</button>
+                </span>
+                <span class="right floated">
+                  <button class="ui inverted blue button"  (click)="addToCart(cloth)">Buy now</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

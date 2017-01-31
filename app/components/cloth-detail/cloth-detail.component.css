@@ -1,0 +1,12 @@
+img{
+  width: 100%;
+}
+h3 {
+  font-size: 30px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+p.cat {
+  font-size: 10px;
+  font-style: italic;
+}

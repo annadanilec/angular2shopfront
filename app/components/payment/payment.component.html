@@ -1,0 +1,57 @@
+<h4 class="ui horizontal divider header">
+  <i class="tag icon"></i>
+  Payment Process
+</h4>
+
+<div class="ui grid">
+  <div class="eight wide column">
+    <h4>Your order</h4>
+    <div class="ui list">
+      <div class="item" *ngFor="let cloth of cart.clothes">{{cloth.name}} - {{cloth.price | currency: 'USD':true}}</div>
+    </div>
+  </div>
+  <div class="eight wide column">
+    <h4>Discount code</h4>
+    <form class="ui form">
+      <div class="field">
+        <label for="discount">Discount code: </label>
+        <input name="discount" #newdiscount>
+      </div>
+
+      <!-- <button (click)="countDiscount(newdiscount)" class="ui inverted blue button">Count discount</button> -->
+      <button (click)="countDiscountMultipleValues(newdiscount)" class="ui inverted blue button">Count discount</button>
+    </form>
+    <p class="discount alert" *ngIf="discountAdded">Your discount was added successfully!</p>
+    <h4>Total: {{cart.total | currency: 'USD':true}}</h4>
+  </div>
+</div>
+
+<h4>Choose delivery method:</h4>
+<div *ngFor="let delivery of deliveries; let idx = index">
+   <input type="radio" name="method"
+   (change)="onSelectionChange(delivery)"
+   [checked]="(idx === 0)"
+   [value]="delivery.value"
+   >  {{delivery.method}} {{delivery.price | currency: 'USD':true}}
+</div>
+<h4>Total with delivery payment: {{this.selectedDelivery.price + cart.total | currency: 'USD':true}}</h4>
+
+<h4 class="ui horizontal divider header">
+  Pick payment method
+</h4>
+<div class="ui grid">
+  <div class="three column row">
+    <div class="column center">
+      <div><i class="paypal icon"></i></div>
+      <button class="ui inverted blue button">Pay with PayPal</button>
+    </div>
+    <div class="column">
+      <div><i class="google wallet icon"></i></div>
+      <button class="ui inverted blue button">Pay with Google Wallet</button>
+    </div>
+    <div class="column">
+      <div><i class="user icon"></i></div>
+      <button class="ui inverted blue button">Pay on delivery</button>
+    </div>
+  </div>
+</div>
